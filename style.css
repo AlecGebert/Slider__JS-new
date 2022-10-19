@@ -1,0 +1,908 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    background: #E5E5E5;
+}
+
+h2 {
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.7rem;
+    line-height: 3.7rem;
+    text-transform: uppercase;
+    color: #E3B873;
+}
+
+h3 {
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+h4 {
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+}
+
+p {
+
+    font-family: 'Nunito Sans';
+    font-style: normal;
+    font-weight: 400;
+}
+
+button {
+    background-color: #E3B873;
+    border: none;
+    cursor: pointer;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: block;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+
+/*Section projects*/
+.projects {
+    width: 100%;
+    background-color: #131313;
+    padding-bottom: 12.5rem;
+}
+
+.projects-menu {
+    max-width: 62.3rem;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10.7rem;
+    margin-left: 62.7rem;
+}
+
+.projects-menu-link {
+    font-family: 'Yeseva One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.action,
+.projects-menu-link:hover {
+    color: #E3B873;
+    text-decoration: underline;
+    /*border-bottom: 0.1rem solid #E3B873;*/
+}
+
+.projects-menu-link:focus {
+    color: #E3B873;
+    text-decoration: underline;
+    /*border-bottom: 0.1rem solid #E3B873;*/
+}
+
+.projects-inner-container {
+    margin: 0 auto;
+    margin-top: 5rem;
+    width: 82%;
+    display: grid;
+    justify-content: space-around;
+    grid-template-areas:
+
+        "A A   E E E"
+        "B B   E E E"
+        "C C   E E E"
+        "C C   E E E"
+        "D D   E E E";
+}
+
+.slider-container-text h2 {
+    letter-spacing: -0.07em;
+    margin-bottom: 2.3rem;
+    grid-area: A;
+}
+
+.slider-container-text p {
+    font-size: 1.4rem;
+    line-height: 2.7rem;
+    color: #FFFFFF;
+    margin-bottom: 5rem;
+    grid-area: B;
+}
+
+.slider-container-statistic {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: space-around;
+    padding-right: 5.8rem;
+    grid-area: C;
+}
+
+.statistic {
+    width: 100%;
+}
+
+
+.slider-container-statistic:nth-child(1) {
+    grid-column: 1/2;
+    grid-row: 1/2;
+
+
+}
+
+.slider-container-statistic:nth-child(2) {
+    grid-column: 2/2;
+    grid-row: 1/2;
+
+
+}
+
+.slider-container-statistic:nth-child(3) {
+    grid-column: 1/2;
+    grid-row: 2/2;
+
+}
+
+.slider-container-statistic:nth-child(4) {
+    grid-column: 2/2;
+    grid-row: 2/2;
+}
+
+.slider-container-statistic h3 {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    color: #E3B873;
+    margin-bottom: 0.7rem;
+}
+
+.slider-container-statistic p {
+    font-size: 1.3rem;
+    line-height: 2.1rem;
+    color: #FFFFFF;
+    margin-bottom: 3.4rem;
+}
+
+
+
+/* Собственно сам слайдер */
+.slider-nav {
+    max-width: 20.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 0.7rem;
+    grid-area: D;
+}
+
+.slider-nav .prev,
+.slider-nav .next {
+    cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+    font-size: 4rem;
+    color: white;
+    transition: 0.6s ease;
+}
+
+/* Кружочки */
+
+
+.slider-dots_item {
+    cursor: pointer;
+    height: 0.957rem;
+    width: 0.957rem;
+    margin: 0.5rem 0.6rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active,
+.slider-dots_item:hover {
+    background-color: #fff;
+}
+
+.slider-container-right {
+    width: 67.9rem;
+    position: relative;
+    margin-left: 5rem;
+    grid-area: E;
+}
+
+.item {
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-size: cover;
+    background-position: center center;
+    opacity: 0;
+    transition: opacity 800ms ease;
+}
+
+.item.active {
+    opacity: 1;
+}
+
+/* Анимация слайдов */
+.slider-container-right .item {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+/*End of Section projects*/
+
+/*MEDIA!*/
+/* xl (> 1200 < 1349) */
+@media (min-width: 1200px) and (max-width: 1349px) {
+
+    .wrapper {
+        max-width: 1349px;
+        min-width: 1200px;
+    }
+
+
+    .projects-inner-container {
+        padding-top: 10.5rem;
+        margin-top: 0rem;
+        width: 90%;
+    }
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text p {
+        font-size: 1.2rem;
+        line-height: 2.7rem;
+        margin-bottom: 3rem;
+    }
+
+}
+
+/* lg (>=992 и <=1199) */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .wrapper {
+        max-width: 1199px;
+        min-width: 992px;
+    }
+
+    .projects-inner-container {
+        padding-top: 10.5rem;
+        margin-top: 0rem;
+        width: 90%;
+    }
+
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text h2 br {
+        display: none;
+    }
+
+    .slider-container-text p {
+        font-size: 1.2rem;
+        line-height: 2.7rem;
+        margin-bottom: 3rem;
+    }
+
+    .slider-container-right {
+        width: 50.9rem;
+        position: relative;
+        margin-left: 5rem;
+        grid-area: E;
+    }
+}
+
+
+/* md (>=768 и <=991) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .wrapper {
+        max-width: 991px;
+        min-width: 768px;
+    }
+
+
+    .projects-inner-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 5.5rem;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text h2 {
+        margin-top: 3.6rem;
+        text-align: center;
+        font-size: 2.2rem;
+        line-height: 3rem;
+        letter-spacing: -0.07em;
+        margin-bottom: 2.3rem;
+    }
+
+    .slider-container-text h2 br {
+        display: none;
+    }
+
+    .slider-container-text p {
+        width: 90.4%;
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+        margin-bottom: 5rem;
+        text-align: center;
+        margin-left: 3rem;
+    }
+
+    .statistic {
+        width: 90%;
+        margin-left: 7rem;
+    }
+
+    .slider-container-statistic h3 {
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .slider-container-statistic p {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        margin-bottom: 3.4rem;
+    }
+
+
+
+    /* Собственно сам слайдер */
+    .slider-nav {
+        position: absolute;
+        max-width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-left: 8rem;
+        
+
+    }
+
+    .slider-nav .prev,
+    .slider-nav .next {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 2.5rem;
+        padding: 0rem 0.5rem;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #E3B873;
+
+
+    }
+
+    .slider-nav .prev {
+        margin-right: 46rem;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+
+
+    .slider-container-right {
+        width: 80%;
+        margin: 0 auto;
+        position: relative;
+        padding-bottom: 35rem;
+        margin-bottom: 5rem;
+    }
+
+}
+
+/* sm (>=576 и <=767) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .wrapper {
+        max-width: 767px;
+        min-width: 576px;
+    }
+
+
+    .projects-inner-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 5.5rem;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text h2 {
+        margin-top: 3.6rem;
+        text-align: center;
+        font-size: 2.2rem;
+        line-height: 3rem;
+        letter-spacing: -0.07em;
+        margin-bottom: 2.3rem;
+    }
+
+    .slider-container-text h2 br {
+        display: none;
+    }
+
+    .slider-container-text p {
+        width: 90.4%;
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+        margin-bottom: 5rem;
+        text-align: center;
+        margin-left: 3rem;
+    }
+
+    .statistic {
+        width: 85%;
+        margin-left: 9rem;
+    }
+
+    .slider-container-statistic h3 {
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .slider-container-statistic p {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        margin-bottom: 3.4rem;
+    }
+
+
+
+    /* Собственно сам слайдер */
+    .slider-nav {
+        position: absolute;
+        max-width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-left: 10rem;
+
+
+    }
+
+    .slider-nav .prev,
+    .slider-nav .next {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 2.5rem;
+        padding: 0rem 0.5rem;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #E3B873;
+
+
+    }
+
+    .slider-nav .prev {
+        margin-right: 24.8rem;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+
+
+    .slider-container-right {
+        width: 34rem;
+        margin: 0 auto;
+        height: 24.1rem;
+        position: relative;
+        padding-bottom: 25rem;
+        margin-bottom: 5rem;
+    }
+
+
+}
+
+
+
+/* xs (<=543px) */
+@media (min-width: 425px) and (max-width: 575px) {
+
+    .wrapper {
+        max-width: 575px;
+        min-width: 375px;
+    }
+
+    .projects-inner-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0rem;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text h2 {
+        margin-top: 3.6rem;
+        text-align: center;
+        font-size: 2.2rem;
+        line-height: 3rem;
+        letter-spacing: -0.07em;
+        margin-bottom: 3rem;
+    }
+
+    .slider-container-text h2 br {
+        display: block;
+    }
+
+    .slider-container-text p {
+        width: 90.4%;
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+        margin-bottom: 7.3rem;
+        text-align: center;
+        margin-left: 3rem;
+    }
+
+    .slider-container-text p br {
+        display: none;
+    }
+
+    .statistic {
+        width: 100%;
+        margin-left: 0rem;
+    }
+
+    .slider-container-statistic {
+        width: 90%;
+        justify-content: space-between;
+        padding-right: 0rem;
+        margin: 0 auto;
+    }
+
+    .slider-container-statistic h3 {
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .slider-container-statistic p {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        margin-bottom: 3.4rem;
+    }
+
+
+
+    /* Собственно сам слайдер */
+    .slider-nav {
+        position: absolute;
+        max-width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-left: 3rem;
+        margin-top: 4rem;
+
+
+    }
+
+    .slider-nav .prev,
+    .slider-nav .next {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 2.5rem;
+        padding: 0rem 0.5rem;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #E3B873;
+
+
+    }
+
+    .slider-nav .prev {
+        margin-right: 25rem;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+
+    .slider-container-right {
+        width: 34rem;
+        margin: 0 auto;
+
+        position: relative;
+        padding-bottom: 25rem;
+        margin-bottom: 5rem;
+    }
+
+}
+
+/* xs (<=543px) */
+@media (min-width: 375px) and (max-width: 424px) {
+
+    .wrapper {
+        max-width: 575px;
+        min-width: 375px;
+    }
+
+    .projects-inner-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0rem;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text h2 {
+        margin-top: 3.6rem;
+        text-align: center;
+        font-size: 2.2rem;
+        line-height: 3rem;
+        letter-spacing: -0.07em;
+        margin-bottom: 3rem;
+    }
+
+    .slider-container-text h2 br {
+        display: block;
+    }
+
+    .slider-container-text p {
+        width: 90.4%;
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+        margin-bottom: 7.3rem;
+        text-align: center;
+        margin-left: 3rem;
+    }
+
+    .slider-container-text p br {
+        display: none;
+    }
+
+    .statistic {
+        width: 100%;
+        margin-left: 0rem;
+    }
+
+    .slider-container-statistic {
+        justify-content: space-between;
+        padding-right: 0rem;
+    }
+
+    .slider-container-statistic h3 {
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .slider-container-statistic p {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        margin-bottom: 3.4rem;
+    }
+
+
+
+    /* Собственно сам слайдер */
+    .slider-nav {
+        position: absolute;
+        max-width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-left: 1rem;
+        margin-top: 4rem;
+
+
+    }
+
+    .slider-nav .prev,
+    .slider-nav .next {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 2.5rem;
+        padding: 0rem 0.5rem;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #E3B873;
+
+
+    }
+
+    .slider-nav .prev {
+        margin-right: 25rem;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+
+    .slider-container-right {
+        width: 34rem;
+        margin: 0 auto;
+
+        position: relative;
+        padding-bottom: 25rem;
+        margin-bottom: 5rem;
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 374px) {
+
+    .wrapper {
+        min-width: 320px;
+        max-width: 374px;
+    }
+
+    .projects-inner-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 0rem;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .projects-menu {
+        display: none;
+    }
+
+    .slider-container-text h2 {
+        margin-top: 3.6rem;
+        text-align: center;
+        font-size: 2.2rem;
+        line-height: 3rem;
+        letter-spacing: -0.07em;
+        margin-bottom: 3rem;
+    }
+
+    .slider-container-text h2 br {
+        display: block;
+    }
+
+    .slider-container-text p {
+        width: 90.4%;
+        font-size: 1.1rem;
+        line-height: 1.7rem;
+        margin-bottom: 7.3rem;
+        text-align: center;
+        margin-left: 3rem;
+    }
+
+    .slider-container-text p br {
+        display: none;
+    }
+
+    .statistic {
+        width: 100%;
+        margin-left: 0rem;
+    }
+
+    .slider-container-statistic {
+        justify-content: space-between;
+        padding-right: 0rem;
+    }
+
+    .slider-container-statistic h3 {
+        font-size: 1.4rem;
+        line-height: 1.9rem;
+        margin-bottom: 1.1rem;
+    }
+
+    .slider-container-statistic p {
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        margin-bottom: 3.4rem;
+    }
+
+
+
+    /* Собственно сам слайдер */
+    .slider-nav {
+        position: absolute;
+        max-width: 90%;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        margin-left: 0.5rem;
+        margin-top: 6rem;
+
+
+    }
+
+    .slider-nav .prev,
+    .slider-nav .next {
+        width: 3.6rem;
+        height: 3.6rem;
+        font-size: 2.5rem;
+        padding: 0rem 0.5rem;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #E3B873;
+
+
+    }
+
+    .slider-nav .prev {
+        margin-right: 20.5rem;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+
+    .slider-container-right {
+        width: 100%;
+        margin: 0 auto;
+        position: relative;
+        padding-bottom: 20rem;
+        margin-bottom: 5rem;
+    }
+
+}
